@@ -47,7 +47,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   return (
     <nav className={`h-full w-[${SIDEBAR_WIDTH}px] bg-black`}>
-      <ul className="mt-5">
+      <ul className="mt-5 space-y-4">
         <li className="flex items-center justify-center">
           <Button
             isIconOnly

@@ -8,7 +8,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { ReactElement } from "react";
-import BtnIcon from "./BtnIcon";
+
 import { IconType } from "react-icons";
 import { FaTrash } from "react-icons/fa6";
 
@@ -30,14 +30,19 @@ const Window = ({
   actionFn: () => void;
 }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const Icon = icon;
   return (
     <>
-      <BtnIcon
-        Icon={icon}
-        aria_label={aria_label}
-        className="h-[70px] w-[70px]"
+      <Button
+        variant="bordered"
+        aria-label={aria_label}
+        className="h-[70px] w-[70px] border-none"
+        isIconOnly
         onPress={onOpen}
-      />
+      >
+        <Icon size={22} className="text-lime-400" />
+      </Button>
+
       <Modal
         backdrop="blur"
         size="3xl"

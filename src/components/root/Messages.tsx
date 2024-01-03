@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPaperPlane, FaArrowDown } from "react-icons/fa6";
-import BtnIcon from "../../ui/BtnIcon";
+
 import { NAV_HEIGHT, WINDOW_HEIGHT } from "../../constants/const";
-import { Button, ScrollShadow, Textarea } from "@nextui-org/react";
+import { Button, ScrollShadow, Spinner, Textarea } from "@nextui-org/react";
 import { useGetJoinedChannels } from "../../lib/tanstack/Query/useGetJoinedChannels";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePostMessages } from "../../lib/tanstack/Mutations/usePostMessages";
@@ -60,7 +60,7 @@ const Messages = () => {
         },
         (change) => {
           console.log("Change received!", change);
-          let { from, payload, sentBy } = change.new;
+          const { from, payload, sentBy } = change.new;
           setNewMsg((prev) => {
             if (prev[0].from === "") {
               return [
@@ -169,13 +169,19 @@ const Messages = () => {
             value={text}
             onValueChange={setText}
           />
-          <BtnIcon
-            Icon={FaPaperPlane}
-            isLoading={sendMessage.isPending}
-            aria_label="Messages"
-            className="h-[70px] w-[70px]"
+          <Button
+            variant="bordered"
+            className="h-[70px] w-[70px] border-none"
+            isIconOnly
+            aria-label="Send"
             onPress={handleSendMessage}
-          />
+          >
+            {sendMessage.isPending ? (
+              <Spinner color="secondary" />
+            ) : (
+              <FaPaperPlane className={"text-lime-400"} size="22px" />
+            )}
+          </Button>
         </div>
       </div>
     </div>
