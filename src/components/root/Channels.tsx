@@ -41,7 +41,7 @@ const Channels = () => {
           channels.data.map((channel) => {
             return (
               <ChannelCard
-                leader={channel.Channels["leader"] as string}
+                leader={channel.Channels.leader}
                 name={channel.channel}
                 key={channel.channel}
                 state={state}

@@ -47,16 +47,16 @@ const Sidebar = () => {
   const navigate = useNavigate();
   return (
     <nav className={`h-full w-[${SIDEBAR_WIDTH}px] bg-black`}>
-      <ul>
-        <li>
+      <ul className="mt-5">
+        <li className="flex items-center justify-center">
           <Button
             isIconOnly
             onPress={() => {
               navigate("/chats");
             }}
-            className="h-[70px] w-[70px] rounded-full bg-lime-400"
+            className="h-[40px] w-[40px] rounded-full bg-lime-400"
           >
-            <FaFacebookMessenger size={40} />
+            <FaFacebookMessenger size={20} />
           </Button>
         </li>
         <li>
@@ -90,11 +90,11 @@ const Sidebar = () => {
               allowsCustomValue
               defaultItems={channels.data}
               selectedKey={joinChannelName}
-              onSelectionChange={setJoinChannelName}
+              onInputChange={setJoinChannelName}
             >
               {(item) => (
-                <AutocompleteItem key={item[toAccess]} value={item[toAccess]}>
-                  {item[toAccess]}
+                <AutocompleteItem key={item.name} value={item.name}>
+                  {item.name}
                 </AutocompleteItem>
               )}
             </Autocomplete>

@@ -15,8 +15,13 @@ const REST_HT = WINDOW_HEIGHT - NAV_HEIGHT;
 
 const Messages = () => {
   const [text, setText] = useState("");
-  const [newMsg, setNewMsg] =
-    useState<React.Dispatch<React.SetStateAction<object>>>();
+  const [newMsg, setNewMsg] = useState([
+    {
+      from: "",
+      payload: "",
+      sentBy: "",
+    },
+  ]);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { channelName } = useParams();
@@ -53,11 +58,29 @@ const Messages = () => {
           table: "Messages",
           filter: `channel=eq.${channelName}`,
         },
-        (payload) => {
-          console.log("Change received!", payload);
-          setNewMsg((prev) =>
-            !prev ? [{ ...payload.new }] : [...prev, payload.new],
-          );
+        (change) => {
+          console.log("Change received!", change);
+          let { from, payload, sentBy } = change.new;
+          setNewMsg((prev) => {
+            if (prev[0].from === "") {
+              return [
+                {
+                  from: from.toString(),
+                  payload: payload.toString(),
+                  sentBy: sentBy.toString(),
+                },
+              ];
+            } else {
+              return [
+                ...prev,
+                {
+                  from: from.toString(),
+                  payload: payload.toString(),
+                  sentBy: sentBy.toString(),
+                },
+              ];
+            }
+          });
         },
       )
       .subscribe();
@@ -114,7 +137,8 @@ const Messages = () => {
               }}
             />
           ))}
-          {newMsg &&
+          {/* DIY hack */}
+          {newMsg[0].from &&
             newMsg.map((message, idx) => (
               <Message
                 key={idx}
