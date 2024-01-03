@@ -91,7 +91,7 @@ const Sidebar = () => {
               defaultItems={channels.data}
               selectedKey={joinChannelName}
               onSelectionChange={(e) => {
-                setJoinChannelName(() => e.toString());
+                setJoinChannelName(() => e?.toString());
               }}
             >
               {(item) => (
