@@ -65,77 +65,79 @@ const Authentication = () => {
     );
   }
   return (
-    <main className="flex h-screen flex-col items-center justify-center overflow-hidden bg-stone-100">
-      {/* Container */}
-      <div className="relative min-h-[480px] w-[768px] max-w-full overflow-hidden rounded-3xl shadow-lg">
-        {/* SignUp container */}
-        <div
-          ref={signUp}
-          className="absolute left-0 top-0 z-[1] h-full w-1/2 bg-white opacity-0 duration-[600ms] ease-in-out"
-        >
-          <div className="flex h-full flex-col justify-center px-[40px]">
-            <h1 className="mb-5 text-4xl font-extrabold">Create Account</h1>
-            <Signup />
-            {/* <IntegrateLoginFormWIthReactHookForm /> */}
-          </div>
-        </div>
-
-        {/* SignInContainer */}
-        <div
-          ref={signIn}
-          className="absolute left-0 top-0 z-[2] h-full w-1/2 bg-white duration-[600ms] ease-in-out"
-        >
-          <div className="flex h-full flex-col justify-center px-[40px]">
-            <h1 className="mb-5 text-4xl font-extrabold">Sign in</h1>
-            <Login />
-          </div>
-        </div>
-
-        {/* Overlay Container */}
-        <div
-          ref={overlayContainer}
-          className="absolute right-0 top-0 z-[100] h-full w-1/2 overflow-hidden duration-[600ms] ease-in-out"
-        >
+    <>
+      <main className="hidden h-screen  flex-col items-center justify-center overflow-hidden bg-stone-100 md:flex">
+        {/* Container */}
+        <div className="relative min-h-[480px] w-[768px] max-w-full overflow-hidden rounded-3xl shadow-lg">
+          {/* SignUp container */}
           <div
-            ref={overlay}
-            className={`relative -left-[100%] h-full w-[200%] translate-x-0 ${gradient} duration-[600ms] ease-in-out`}
+            ref={signUp}
+            className="absolute left-0 top-0 z-[1] h-full w-1/2 bg-white opacity-0 duration-[600ms] ease-in-out"
+          >
+            <div className="flex h-full flex-col justify-center px-[40px]">
+              <h1 className="mb-5 text-4xl font-extrabold">Create Account</h1>
+              <Signup />
+              {/* <IntegrateLoginFormWIthReactHookForm /> */}
+            </div>
+          </div>
+
+          {/* SignInContainer */}
+          <div
+            ref={signIn}
+            className="absolute left-0 top-0 z-[2] h-full w-1/2 bg-white duration-[600ms] ease-in-out"
+          >
+            <div className="flex h-full flex-col justify-center px-[40px]">
+              <h1 className="mb-5 text-4xl font-extrabold">Sign in</h1>
+              <Login />
+            </div>
+          </div>
+
+          {/* Overlay Container */}
+          <div
+            ref={overlayContainer}
+            className="absolute right-0 top-0 z-[100] h-full w-1/2 overflow-hidden duration-[600ms] ease-in-out"
           >
             <div
-              ref={overlaySignIn}
-              className="absolute top-0 flex h-full w-1/2 translate-x-[-20%] flex-col items-center justify-center px-[40px] text-center duration-[600ms] ease-in-out"
+              ref={overlay}
+              className={`relative -left-[100%] h-full w-[200%] translate-x-0 ${gradient} duration-[600ms] ease-in-out`}
             >
-              <AnimateText
-                animate={phase !== "set" ? true : false}
-                text={["Design idea", "of Vivek Singh"]}
-              />
+              <div
+                ref={overlaySignIn}
+                className="absolute top-0 flex h-full w-1/2 translate-x-[-20%] flex-col items-center justify-center px-[40px] text-center duration-[600ms] ease-in-out"
+              >
+                <AnimateText
+                  animate={phase !== "set" ? true : false}
+                  text={["Design idea", "of Vivek Singh"]}
+                />
 
-              <span className="mt-5 text-white">
-                Already have an account ?{" "}
-                <Link>
-                  <button onClick={handleClick}>Sign in</button>
-                </Link>
-              </span>
-            </div>
+                <span className="mt-5 text-white">
+                  Already have an account ?{" "}
+                  <Link>
+                    <button onClick={handleClick}>Sign in</button>
+                  </Link>
+                </span>
+              </div>
 
-            <div
-              ref={overlaySignUp}
-              className="absolute right-0 top-0 flex h-full w-1/2 translate-x-0 flex-col items-center justify-center px-[40px] text-center duration-[600ms] ease-in-out"
-            >
-              <AnimateText
-                animate={phase !== "reset" ? true : false}
-                text={["Made with ❤️", "by Shahil Yadav"]}
-              />
-              <span className="mt-5 text-white">
-                Don't have an account already ?{" "}
-                <Link>
-                  <button onClick={handleClick}>Sign up</button>
-                </Link>
-              </span>
+              <div
+                ref={overlaySignUp}
+                className="absolute right-0 top-0 flex h-full w-1/2 translate-x-0 flex-col items-center justify-center px-[40px] text-center duration-[600ms] ease-in-out"
+              >
+                <AnimateText
+                  animate={phase !== "reset" ? true : false}
+                  text={["Made with ❤️", "by Shahil Yadav"]}
+                />
+                <span className="mt-5 text-white">
+                  Don't have an account already ?{" "}
+                  <Link>
+                    <button onClick={handleClick}>Sign up</button>
+                  </Link>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 
