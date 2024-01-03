@@ -15,7 +15,7 @@ export function useCreateAccount() {
       });
     },
 
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success(`Welcome to your chat application`);
     },
     onError: (err) => {

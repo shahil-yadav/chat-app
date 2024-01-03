@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Avatar, Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
 import { FaTrash } from "react-icons/fa6";

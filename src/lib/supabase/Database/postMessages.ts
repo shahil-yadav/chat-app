@@ -1,4 +1,3 @@
-import { useAccountContext } from "../../../context/AccountProvider";
 import { supabase } from "../config";
 
 export interface MessageType {

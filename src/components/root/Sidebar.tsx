@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Button } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem, Button } from "@nextui-org/react";
 
 import { useAccountContext } from "../../context/AccountProvider";
 import { useCreateChannel } from "../../lib/tanstack/Mutations/useCreateChannel";
@@ -9,8 +9,6 @@ import { useJoinChannel } from "../../lib/tanstack/Mutations/useJoinChannel";
 
 import Window from "../../ui/Window";
 import Inp from "../../ui/Inp";
-
-import SuggestionSearch from "../../ui/SuggestionSearch";
 
 import {
   FaFacebookMessenger,
@@ -70,13 +68,36 @@ const Sidebar = () => {
             actionState={joinChannel.isPending}
             actionFn={handleJoinChannel}
           >
-            <SuggestionSearch
+            <Autocomplete
               label="Join Channel"
-              data={channels.data}
-              toAccess="name"
-              value={joinChannelName}
-              setValue={setJoinChannelName}
-            />
+              size="md"
+              className="max-w-xs"
+              classNames={{
+                clearButton: "text-white",
+                selectorButton: "text-white",
+                popoverContent: ["bg-white/20", "text-white"],
+              }}
+              inputProps={{
+                classNames: {
+                  inputWrapper: [
+                    "bg-black",
+                    "data-[hover=true]:bg-white/10",
+                    "group-data-[focus=true]:bg-white/10",
+                  ],
+                  input: "group-data-[has-value=true]:text-white",
+                },
+              }}
+              allowsCustomValue
+              defaultItems={channels.data}
+              selectedKey={joinChannelName}
+              onSelectionChange={setJoinChannelName}
+            >
+              {(item) => (
+                <AutocompleteItem key={item[toAccess]} value={item[toAccess]}>
+                  {item[toAccess]}
+                </AutocompleteItem>
+              )}
+            </Autocomplete>
           </Window>
         </li>
         <li>

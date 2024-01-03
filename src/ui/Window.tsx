@@ -14,7 +14,6 @@ import { FaTrash } from "react-icons/fa6";
 
 const Window = ({
   icon,
-  iconColor,
   aria_label,
   label,
   children,

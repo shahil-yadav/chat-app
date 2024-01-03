@@ -1,6 +1,6 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Button } from "@nextui-org/react";
-import FormInput from "../../ui/FormInput";
+import { Button, Input } from "@nextui-org/react";
+
 import { useCreateAccount } from "../../lib/tanstack/Mutations/useCreateAccount";
 
 interface Isign_up {
@@ -34,12 +34,17 @@ const Signup = () => {
         rules={{ required: true }}
         control={control}
         render={({ field }) => (
-          <FormInput
-            field={field}
-            isInvalid={!!errors.name}
-            errorMsg={errors.name && "Please provide your name"}
+          <Input
+            radius="sm"
             label="Name"
             type="text"
+            isInvalid={!!errors.name}
+            errorMessage={errors.name && "Please provide your name"}
+            variant="bordered"
+            classNames={{
+              inputWrapper: ["my-3", "bg-white", "border", "border-black"],
+            }}
+            {...field}
           />
         )}
       />
@@ -49,12 +54,17 @@ const Signup = () => {
         rules={{ required: true, pattern: /^\S+@\S+$/i }}
         control={control}
         render={({ field }) => (
-          <FormInput
-            field={field}
-            isInvalid={!!errors.email}
-            errorMsg={errors.email && "Please enter a valid email"}
+          <Input
+            radius="sm"
             label="Email"
             type="email"
+            isInvalid={!!errors.email}
+            errorMessage={errors.email && "Please provide your Email"}
+            variant="bordered"
+            classNames={{
+              inputWrapper: ["my-3", "bg-white", "border", "border-black"],
+            }}
+            {...field}
           />
         )}
       />
@@ -64,14 +74,17 @@ const Signup = () => {
         rules={{ required: true, minLength: 8 }}
         control={control}
         render={({ field }) => (
-          <FormInput
-            field={field}
-            isInvalid={!!errors.password}
-            errorMsg={
-              errors.password && "Please enter a password that is 8 digit long"
-            }
+          <Input
+            radius="sm"
             label="Password"
             type="password"
+            isInvalid={!!errors.password}
+            errorMessage={errors.password && "Please provide your password"}
+            variant="bordered"
+            classNames={{
+              inputWrapper: ["my-3", "bg-white", "border", "border-black"],
+            }}
+            {...field}
           />
         )}
       />
