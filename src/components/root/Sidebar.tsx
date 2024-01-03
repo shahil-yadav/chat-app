@@ -90,7 +90,9 @@ const Sidebar = () => {
               allowsCustomValue
               defaultItems={channels.data}
               selectedKey={joinChannelName}
-              onInputChange={setJoinChannelName}
+              onSelectionChange={(e) => {
+                setJoinChannelName(() => e.toString());
+              }}
             >
               {(item) => (
                 <AutocompleteItem key={item.name} value={item.name}>

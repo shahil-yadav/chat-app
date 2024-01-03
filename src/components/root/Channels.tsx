@@ -37,18 +37,17 @@ const Channels = () => {
             />
           </div>
         )}
-        {channels.data &&
-          channels.data.map((channel) => {
-            return (
-              <ChannelCard
-                leader={channel.Channels.leader}
-                name={channel.channel}
-                key={channel.channel}
-                state={state}
-                setState={setState}
-              />
-            );
-          })}
+        {channels.data?.map((channel) => {
+          return (
+            <ChannelCard
+              leader={channel.Channels.leader}
+              name={channel.channel}
+              key={channel.channel}
+              state={state}
+              setState={setState}
+            />
+          );
+        })}
       </ScrollShadow>
     </div>
   );
