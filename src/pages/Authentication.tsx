@@ -105,11 +105,6 @@ const Authentication = () => {
                 ref={overlaySignIn}
                 className="absolute top-0 flex h-full w-1/2 translate-x-[-20%] flex-col items-center justify-center px-[40px] text-center duration-[600ms] ease-in-out"
               >
-                <AnimateText
-                  animate={phase !== "set" ? true : false}
-                  text={["Design idea", "of Vivek Singh"]}
-                />
-
                 <span className="mt-5 text-white">
                   Already have an account ?{" "}
                   <Link>
